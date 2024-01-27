@@ -1,32 +1,19 @@
-from abc import ABC, abstractmethod
 import requests
 
 
-class GetApiData(ABC):
-    """Абстрактный класс на получение данных по api"""
-
-    @abstractmethod
-    def get_api_data(self):
-        pass
-
-    @abstractmethod
-    def __repr__(self):
-        pass
-
-
-class GetApiDataHeadHunter(GetApiData):
+class GetApiData:
     """Класс данных по api HeadHunter"""
-    api = 'https://api.hh.ru/vacancies'
-    employers = ['Yandex', 'ОАО Российские железные дороги', 'Московский метрополитен', 'М.Видео-Эльдорадо. Розница', 'Вкусно — и точка', 'ВкусВилл. Магазины', 'WILDBERRIES', 'ПАО Аэрофлот', 'ПАО «Газпром нефть» Рабочие позиции', 'ЛУКОЙЛ']
 
-    @classmethod
-    def __repr__(cls):
-        return f"{cls.api}"
+    def __init__(self):
+        self.api = 'https://api.hh.ru/vacancies'
+        self.employers = ['Yandex', 'ОАО Российские железные дороги', 'Московский метрополитен', 'М.Видео-Эльдорадо. Розница', 'Вкусно — и точка', 'ВкусВилл. Магазины', 'WILDBERRIES', 'ПАО Аэрофлот', 'ПАО «Газпром нефть» Рабочие позиции', 'ЛУКОЙЛ']
 
-    @classmethod
-    def get_api_data(cls):
-        for employer in GetApiDataHeadHunter.employers:
-            response = requests.get(cls.api,
+    def __repr__(self):
+        return f"GetApiData: {self.api, self.employers}"
+
+    def get_api_data(self):
+        for employer in self.employers:
+            response = requests.get(self.api,
                                     params={'text': employer, 'search_field': 'company_name'})
             if response.status_code == 200:
                 data = response.json()
@@ -42,20 +29,15 @@ class GetApiDataHeadHunter(GetApiData):
                                 salary = "Зарплата не указана"
                                 salary_to = ''
                                 salary_currency = ''
-                                cls.salary = 0
                             else:
                                 if v['salary']['from'] is None:
                                     salary = ''
-                                    cls.salary = v['salary']['to']
                                 else:
                                     salary = f"от {v['salary']['from']}"
-                                    cls.salary = v['salary']['to']
                                 if v['salary']['to'] is None:
                                     salary_to = ''
-                                    cls.salary = v['salary']['from']
                                 else:
                                     salary_to = f"до {v['salary']['to']}"
-                                    cls.salary = v['salary']['to']
                                 salary_currency = v['salary']['currency']
                             if v["address"] is None:
                                 city_address = "Город не указан"
@@ -71,5 +53,5 @@ class GetApiDataHeadHunter(GetApiData):
                 print(f"Доступ к сайту не получен! Код ошибки: {response.status_code}")
 
 
-f = GetApiDataHeadHunter()
+f = GetApiData()
 f.get_api_data()
