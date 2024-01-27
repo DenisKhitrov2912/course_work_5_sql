@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "5-course-sql"
+version = "0.1.0"
+description = ""
+authors = ["Khitrov <Hitrov.95@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
