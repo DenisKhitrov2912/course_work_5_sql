@@ -63,8 +63,8 @@ class CreateDB:
             FROM vacancies
             ORDER BY vacancy_id DESC
             LIMIT 1""")
-
             vacancy_id = cur.fetchone()[0]
+
             cur.execute("""
             INSERT INTO employers (employer_name, city, vacancy_url, vacancy_id)
             VALUES (%s, %s, %s, %s)""", (dat[6], dat[5], dat[7], vacancy_id))
@@ -74,12 +74,11 @@ class CreateDB:
             FROM employers
             ORDER BY employer_id DESC
             LIMIT 1""")
-
             employer_id = cur.fetchone()[0]
+
             cur.execute("""
             INSERT INTO salary (start_salary, end_salary, currency, vacancy_url, employer_id)
             VALUES (%s, %s, %s, %s, %s)""", (dat[2], dat[3], dat[4], dat[7], employer_id))
-
 
 
 f = CreateDB()
