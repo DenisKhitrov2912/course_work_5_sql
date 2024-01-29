@@ -6,12 +6,14 @@ class GetApiData:
 
     def __init__(self):
         self.api = 'https://api.hh.ru/vacancies'
+        self.json_file = 'vacancies_data.json'
         self.employers = ['Yandex', 'ОАО Российские железные дороги', 'Московский метрополитен', 'М.Видео-Эльдорадо. Розница', 'Вкусно — и точка', 'ВкусВилл. Магазины', 'WILDBERRIES', 'ПАО Аэрофлот', 'ПАО «Газпром нефть» Рабочие позиции', 'ЛУКОЙЛ']
 
     def __repr__(self):
         return f"GetApiData: {self.api, self.employers}"
 
     def get_api_data(self):
+        list_vac = []
         for employer in self.employers:
             response = requests.get(self.api,
                                     params={'text': employer, 'search_field': 'company_name'})
@@ -20,7 +22,7 @@ class GetApiData:
                 keys = ["items"]
                 filtered_data = {k: data[k] for k in keys}
                 counter = 0
-                limit = 5
+                limit = 10000
                 while True:
                     for v in filtered_data["items"]:
                         if counter < limit:
@@ -46,11 +48,15 @@ class GetApiData:
                             v['employer']['name'] = employer
                             link = f'https://hh.ru/vacancy/{v["id"]}'
                             key = f"{v['id']},  {v['name']},  {salary},  {salary_to},  {salary_currency},  {city_address},  {v['employer']['name']},  {link}"
-                            print(key)
+                            list_vac.append(key)
                     else:
                         break
             else:
                 print(f"Доступ к сайту не получен! Код ошибки: {response.status_code}")
+        list_vacancies = []
+        for vac in list_vac:
+            list_vacancies.append(vac.split(", "))
+        return list_vacancies
 
 
 f = GetApiData()
