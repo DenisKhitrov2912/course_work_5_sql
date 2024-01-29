@@ -1,5 +1,3 @@
-import json
-
 import psycopg2
 
 from config import config
@@ -27,10 +25,8 @@ class CreateDB:
                 with self.conn.cursor() as cur:
                     self.execute_sql_script(cur)
                     print(f"В БД {self.db_name} таблицы успешно созданы")
-
-                    #data = self.get_suppliers_data()
-                    #self.insert_suppliers_data(cur, data)
-                    #print("Данные в suppliers успешно добавлены")
+                    self.insert_suppliers_data(cur)
+                    print("Данныe успешно добавлены")
         except(Exception, psycopg2.DatabaseError) as error:
             print(error)
         finally:
@@ -55,34 +51,36 @@ class CreateDB:
             create_db_script = file.read()
         cur.execute(create_db_script)
 
-    def get_suppliers_data(self) -> list[dict]:
-        """Извлекает данные из JSON-файла и возвращает список словарей с соответствующей информацией."""
-        with open(self.json_file, 'r') as file:
-            data = json.load(file)
-            return data
-
-    def insert_suppliers_data(self, cur, data: list[dict]) -> None:
+    def insert_suppliers_data(self, cur) -> None:
         """Добавляет данные из data в таблицы."""
-        for dat in data:
+        for dat in self.data():
             cur.execute("""
-            INSERT INTO suppliers (company_name, contact, address, phone, fax, homepage, products)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
-            RETURNING supplier_id""",
-                        (data["company_name"], data["contact"], data["address"], data["phone"], data["fax"],
-                         data["homepage"], data["products"]))
+            INSERT INTO vacancies (vacancy_number, name, city, url)
+            VALUES (%s, %s, %s, %s)""", (dat[0], dat[1], dat[5], dat[7]))
 
-            supplier_id = cur.fetchone()[0]
+            cur.execute("""
+            SELECT vacancy_id
+            FROM vacancies
+            ORDER BY vacancy_id DESC
+            LIMIT 1""")
 
-            for product_one in data['products']:
-                cur.execute(
-                    """ SELECT product_id FROM products WHERE product_name = %(product)s""", {'product': product_one}
-                )
+            vacancy_id = cur.fetchone()[0]
+            cur.execute("""
+            INSERT INTO employers (employer_name, city, vacancy_url, vacancy_id)
+            VALUES (%s, %s, %s, %s)""", (dat[6], dat[5], dat[7], vacancy_id))
 
-                product_id = cur.fetchone()[0]
+            cur.execute("""
+            SELECT employer_id
+            FROM employers
+            ORDER BY employer_id DESC
+            LIMIT 1""")
 
-                cur.execute(
-                    """UPDATE products SET supplier_id = %(suppl)s WHERE product_id= %(prod)s""",
-                    {'suppl': supplier_id, 'prod': product_id}
-                )
+            employer_id = cur.fetchone()[0]
+            cur.execute("""
+            INSERT INTO salary (start_salary, end_salary, currency, vacancy_url, employer_id)
+            VALUES (%s, %s, %s, %s, %s)""", (dat[2], dat[3], dat[4], dat[7], employer_id))
+
+
+
 f = CreateDB()
 f.main()

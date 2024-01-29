@@ -25,6 +25,7 @@ CREATE TABLE salary
     start_salary varchar(50),
 	end_salary varchar(50),
     currency varchar(10),
+    vacancy_url varchar(100),
 
     CONSTRAINT fk_salary_employers FOREIGN KEY(employer_id) REFERENCES employers(employer_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
