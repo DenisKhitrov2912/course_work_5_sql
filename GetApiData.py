@@ -5,7 +5,7 @@ class GetApiData:
     """Класс данных по api HeadHunter"""
 
     api = 'https://api.hh.ru/vacancies'
-    employers = ['Yandex', 'ОАО Российские железные дороги', 'Московский метрополитен', 'М.Видео-Эльдорадо. Розница', 'Вкусно — и точка', 'ВкусВилл. Магазины', 'WILDBERRIES', 'ПАО Аэрофлот', 'ПАО «Газпром нефть» Рабочие позиции', 'ЛУКОЙЛ']
+    employers = ['Yandex', 'ОАО Российские железные дороги', 'Московский метрополитен', 'М.Видео-Эльдорадо. Розница', 'Вкусно — и точка', 'ВкусВилл. Магазины', 'WILDBERRIES', 'ПАО Аэрофлот', 'ПАО «Газпром нефть» Рабочие позиции', 'ЛУКОЙЛ', 'Skyeng']
 
     @classmethod
     def __repr__(cls):
@@ -28,23 +28,23 @@ class GetApiData:
                         if counter < limit:
                             counter += 1
                             if v['salary'] is None:
-                                salary = ""
-                                salary_to = ''
-                                salary_currency = ''
+                                salary = "0"
+                                salary_to = '0'
+                                salary_currency = 'н/д'
                             else:
                                 if v['salary']['from'] is None:
-                                    salary = ''
+                                    salary = '0'
                                 else:
                                     salary = f"{v['salary']['from']}"
                                 if v['salary']['to'] is None:
-                                    salary_to = ''
+                                    salary_to = '0'
                                 else:
                                     salary_to = f"{v['salary']['to']}"
                                 salary_currency = v['salary']['currency']
                             if v["address"] is None:
-                                city_address = ""
+                                city_address = "н/д"
                             elif v["address"]["city"] is None:
-                                city_address = ""
+                                city_address = "н/д"
                             else:
                                 city_address = v["address"]["city"]
                             v['employer']['name'] = employer
