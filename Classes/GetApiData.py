@@ -3,7 +3,6 @@ import requests
 
 class GetApiData:
     """Класс данных по api HeadHunter"""
-
     api = 'https://api.hh.ru/vacancies'
     employers = ['Yandex', 'ОАО Российские железные дороги', 'Московский метрополитен', 'М.Видео-Эльдорадо. Розница', 'Вкусно — и точка', 'ВкусВилл. Магазины', 'WILDBERRIES', 'ПАО Аэрофлот', 'ПАО «Газпром нефть» Рабочие позиции', 'ЛУКОЙЛ', 'Skyeng']
 
@@ -13,6 +12,7 @@ class GetApiData:
 
     @classmethod
     def get_api_data(cls) -> list[list]:
+        """Получение данных о вакансиях по api"""
         list_vac = []
         for employer in cls.employers:
             response = requests.get(cls.api,
@@ -59,7 +59,3 @@ class GetApiData:
         for vac in list_vac:
             list_vacancies.append(vac.split("| "))
         return list_vacancies
-
-
-f = GetApiData()
-f.get_api_data()
