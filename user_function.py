@@ -45,3 +45,6 @@ def user_func():
         elif user_input == '0':
             print("Программа завершена.")
             quit()
+        else:
+            print("Ведите указанные числа!")
+            continue
