@@ -1,5 +1,6 @@
 from Classes.CreateDB import CreateDB
 from Classes.DBmanager import DBManager
+import psycopg2
 
 
 def user_func():
@@ -17,7 +18,6 @@ def user_func():
         else:
             print("Введите '1' или '0'!")
             continue
-    manage_db = DBManager()
     while True:
         user_input = input("""Что сделать с созданной БД? 
 '1' - получить список всех компаний и количество вакансий у каждой компании, 
@@ -27,24 +27,33 @@ def user_func():
 '5' - получает список всех вакансий с поиском по ключевому слову, 
 '0' - выход.
 """)
-        if user_input == '1':
-            manage_db.get_companies_and_vacancies_count()
-            continue
-        elif user_input == '2':
-            manage_db.get_all_vacancies()
-            continue
-        elif user_input == '3':
-            manage_db.get_avg_salary()
-            continue
-        elif user_input == '4':
-            manage_db.get_vacancies_with_higher_salary()
-            continue
-        elif user_input == '5':
-            manage_db.get_vacancies_with_keyword()
-            continue
-        elif user_input == '0':
-            print("Программа завершена.")
-            quit()
-        else:
-            print("Ведите указанные числа!")
-            continue
+        try:
+            with psycopg2.connect(dbname=DBManager.return_db_name(db_new), host='localhost', user='postgres', password='12345',
+                                  port='5432') as conn:
+                with conn.cursor() as cur:
+                    if user_input == '1':
+                        DBManager.get_companies_and_vacancies_count(cur)
+                        continue
+                    elif user_input == '2':
+                        DBManager.get_all_vacancies(cur)
+                        continue
+                    elif user_input == '3':
+                        DBManager.get_avg_salary(cur)
+                        continue
+                    elif user_input == '4':
+                        DBManager.get_vacancies_with_higher_salary(cur)
+                        continue
+                    elif user_input == '5':
+                        DBManager.get_vacancies_with_keyword(cur)
+                        continue
+                    elif user_input == '0':
+                        print("Программа завершена.")
+                        break
+                    else:
+                        print("Ведите указанные числа!")
+                        continue
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+        finally:
+            if conn is not None:
+                conn.close()
