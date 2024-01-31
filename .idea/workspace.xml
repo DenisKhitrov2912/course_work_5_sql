@@ -1,35 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0991eee-9f8b-4b60-893a-31a93bbfe174" name="Changes" comment="" />
+    <list default="true" id="e0991eee-9f8b-4b60-893a-31a93bbfe174" name="Changes" comment="4">
+      <change afterPath="$PROJECT_DIR$/Classes/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/other_files/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CreateDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/CreateDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBmanager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/DBmanager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GetApiData.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/GetApiData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/other_files/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/other_files/create_table.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2bXSXwIFel8KBKJTytgrG9QiwnR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.CreateDB.executor&quot;: &quot;Run&quot;,
+    &quot;Python.DBmanager.executor&quot;: &quot;Run&quot;,
+    &quot;Python.GetApiData.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config.executor&quot;: &quot;Run&quot;,
+    &quot;Python.createDB.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ло.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/denis/postgres-homeworks&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/other_files" />
+      <recent name="$PROJECT_DIR$/Classes" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -42,6 +83,62 @@
       <option name="presentableId" value="Default" />
       <updated>1706359973863</updated>
     </task>
+    <task id="LOCAL-00001" summary="start working">
+      <option name="closed" value="true" />
+      <created>1706360121675</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1706360121675</updated>
+    </task>
+    <task id="LOCAL-00002" summary="start working">
+      <option name="closed" value="true" />
+      <created>1706361657618</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1706361657618</updated>
+    </task>
+    <task id="LOCAL-00003" summary="2">
+      <option name="closed" value="true" />
+      <created>1706538097096</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1706538097096</updated>
+    </task>
+    <task id="LOCAL-00004" summary="3">
+      <option name="closed" value="true" />
+      <created>1706546664817</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706546664817</updated>
+    </task>
+    <task id="LOCAL-00005" summary="3">
+      <option name="closed" value="true" />
+      <created>1706548107811</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706548107811</updated>
+    </task>
+    <task id="LOCAL-00006" summary="4">
+      <option name="closed" value="true" />
+      <created>1706634076759</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706634076759</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="start working" />
+    <MESSAGE value="2" />
+    <MESSAGE value="3" />
+    <MESSAGE value="4" />
+    <option name="LAST_COMMIT_MESSAGE" value="4" />
   </component>
 </project>
